@@ -40,7 +40,7 @@ export default function DeleteConfirmationDialog({
           <div className="p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Delete Image</h3>
             <p className="text-gray-500 mb-6">
-              Are you sure you want to delete "{imageName}"? This action cannot be undone.
+              Are you sure you want to delete &quot;{imageName}&quot;? This action cannot be undone.
             </p>
             <div className="flex justify-end gap-3">
               <button

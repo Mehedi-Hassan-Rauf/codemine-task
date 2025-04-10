@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server"
 
 const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUD_NAME
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY
-const API_SECRET = process.env.NEXT_PUBLIC_API_SECRET
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     // In a real implementation, you would use the Cloudinary SDK here
     // to fetch images from your Cloudinary account
@@ -33,8 +31,6 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const formData = await request.formData()
-
     // In a real implementation, you would:
     // 1. Extract the files from formData
     // 2. Use the Cloudinary SDK to upload them
@@ -52,8 +48,6 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const { publicId } = await request.json()
-
     // In a real implementation, you would:
     // 1. Use the Cloudinary SDK to delete the image
     // 2. Return the result
