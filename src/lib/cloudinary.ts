@@ -26,7 +26,6 @@ export async function fetchImages(): Promise<{ images: ImageType[] }> {
 
     const data = await response.json()
 
-    // Transform Cloudinary response to our ImageType format
     const images: ImageType[] = data.resources.map((resource: any) => ({
       public_id: resource.public_id,
       url: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/v${resource.version}/${resource.public_id}.${resource.format}`,
@@ -48,7 +47,6 @@ export async function fetchImages(): Promise<{ images: ImageType[] }> {
 // Upload images to Cloudinary
 export async function uploadImages(files: File[], tags: string[] = []): Promise<void> {
   try {
-    // Process each file
     await Promise.all(
       files.map(async (file) => {
         // Create a timestamp for the signature
@@ -119,16 +117,12 @@ export async function deleteImage(publicId: string): Promise<void> {
   }
 }
 
-// Helper function to generate a signature for Cloudinary API requests
 async function generateSignature(paramsToSign: string): Promise<string> {
-  // In a browser environment, we need to use the Web Crypto API
   const encoder = new TextEncoder()
   const data = encoder.encode(paramsToSign)
 
-  // Generate SHA-1 hash
   const hashBuffer = await crypto.subtle.digest("SHA-1", data)
 
-  // Convert to hex string
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
 

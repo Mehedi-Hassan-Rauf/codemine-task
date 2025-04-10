@@ -4,10 +4,6 @@ const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUD_NAME
 
 export async function GET() {
   try {
-    // In a real implementation, you would use the Cloudinary SDK here
-    // to fetch images from your Cloudinary account
-
-    // For now, we'll return mock data
     const mockImages = Array.from({ length: 9 }, (_, i) => {
       const id = `image-${i + 1}`
       return {
@@ -31,11 +27,6 @@ export async function GET() {
 
 export async function POST() {
   try {
-    // In a real implementation, you would:
-    // 1. Extract the files from formData
-    // 2. Use the Cloudinary SDK to upload them
-    // 3. Return the upload results
-
     return NextResponse.json({
       success: true,
       message: "Images uploaded successfully",
@@ -48,9 +39,6 @@ export async function POST() {
 
 export async function DELETE() {
   try {
-    // In a real implementation, you would:
-    // 1. Use the Cloudinary SDK to delete the image
-    // 2. Return the result
 
     return NextResponse.json({
       success: true,

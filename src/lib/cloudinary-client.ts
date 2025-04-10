@@ -9,7 +9,6 @@ export async function fetchImages(): Promise<{ images: ImageType[] }> {
       throw new Error(`Failed to fetch images: ${response.statusText}`)
     }
 
-    // Return exactly what the API returns, no modifications
     return await response.json()
   } catch (error) {
     console.error("Error fetching images:", error)
@@ -20,7 +19,6 @@ export async function fetchImages(): Promise<{ images: ImageType[] }> {
 // Upload images via our API route
 export async function uploadImages(files: File[], tags: string[] = []): Promise<void> {
   try {
-    // Process each file
     await Promise.all(
       files.map(async (file) => {
         const formData = new FormData()
@@ -46,7 +44,7 @@ export async function uploadImages(files: File[], tags: string[] = []): Promise<
     )
   } catch (error) {
     console.error("Error uploading images:", error)
-    throw error // Rethrow to show the actual error
+    throw error
   }
 }
 
