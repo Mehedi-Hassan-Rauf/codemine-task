@@ -29,7 +29,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
     // In a real implementation, you would:
     // 1. Extract the files from formData
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE() {
   try {
     // In a real implementation, you would:
     // 1. Use the Cloudinary SDK to delete the image
